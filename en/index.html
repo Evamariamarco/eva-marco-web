@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eva Marco | Soprano & Event Planner</title>
+<link rel="alternate" hreflang="es" href="https://evamarco.com/">
+<link rel="alternate" hreflang="en" href="https://evamarco.com/en/">
+<link rel="alternate" hreflang="it" href="https://evamarco.com/it/">
+<link rel="alternate" hreflang="x-default" href="https://evamarco.com/">
+<style>
+  :root{
+    --ink:#111111;
+    --white:#ffffff;
+    --grey:#767676;
+    --line:#e9e9e9;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.5;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-weight:400;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1200px; margin:0 auto; padding:0 40px;}
+
+  /* Header */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:var(--white);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 40px;
+  }
+  .logo{
+    font-size:11px; letter-spacing:0.2em; text-transform:uppercase; font-weight:600;
+  }
+  .navlinks{display:flex; gap:30px; font-size:11px; letter-spacing:0.14em; text-transform:uppercase;}
+  .navlinks a{opacity:1; position:relative; padding-bottom:2px;}
+  .navlinks a::after{
+    content:''; position:absolute; left:0; bottom:-2px; width:0; height:1px; background:var(--ink);
+    transition:width .25s;
+  }
+  .navlinks a:hover::after{width:100%;}
+  .lang-switch{display:flex; gap:8px; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; margin-left:30px;}
+  .lang-switch a{opacity:0.45; transition:opacity .2s;}
+  .lang-switch a:hover{opacity:1;}
+  .lang-switch a.active{opacity:1; font-weight:700;}
+  .lang-switch span{opacity:0.3;}
+  @media (max-width: 820px){ .lang-switch{margin-left:0;} }
+
+  /* Hero — full bleed */
+  .hero{
+    position:relative;
+    width:100%;
+    height:92vh;
+    min-height:560px;
+    overflow:hidden;
+  }
+  .hero img{
+    width:100%; height:100%; object-fit:cover; object-position:center 22%;
+  }
+  .hero::after{
+    content:'';
+    position:absolute; inset:0;
+    background:linear-gradient(0deg, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.35) 45%, rgba(0,0,0,0) 75%);
+  }
+  .hero-copy{
+    position:absolute; left:40px; right:40px; bottom:48px; z-index:2;
+    color:var(--white);
+  }
+  .hero-copy .eyebrow{color:var(--white); opacity:0.9;}
+  .hero-copy h1{
+    font-size:clamp(36px, 6vw, 64px);
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+    margin-bottom:14px;
+  }
+  .hero-copy p{
+    font-size:14px; max-width:600px; margin-bottom:22px; opacity:0.94; line-height:1.65;
+  }
+  .hero-tagline{
+    font-size:clamp(15px,1.6vw,19px); font-weight:300; font-style:italic;
+    letter-spacing:0.03em; margin-bottom:18px; opacity:0.96;
+  }
+  .eyebrow{
+    font-size:11px; letter-spacing:0.2em; text-transform:uppercase;
+    margin-bottom:16px; display:block; font-weight:600;
+  }
+  .cta-row{display:flex; gap:28px; flex-wrap:wrap; align-items:center;}
+  .btn{
+    display:inline-block; font-size:11px;
+    letter-spacing:0.14em; text-transform:uppercase;
+    padding-bottom:4px; border-bottom:1px solid currentColor;
+    transition:opacity .2s;
+  }
+  .btn:hover{opacity:0.6;}
+  .btn-solid{
+    background:var(--white); color:var(--ink);
+    padding:13px 28px; border-bottom:none;
+  }
+  .btn-solid:hover{background:var(--ink); color:var(--white); opacity:1;}
+
+  section{padding:110px 40px;}
+  .section-head{max-width:640px; margin:0 auto 60px;}
+  .section-head.center{text-align:center;}
+  .section-head h2{font-size:clamp(32px,5vw,52px); font-weight:700; text-transform:uppercase; letter-spacing:0.01em;}
+  .section-head p{color:var(--grey); margin-top:14px; font-size:14px;}
+
+  /* Sobre mi — full bleed image, no borders */
+  .about{
+    display:grid; grid-template-columns:1fr 1fr; align-items:stretch;
+  }
+  .about-photo{overflow:hidden;}
+  .about-photo img{width:100%; height:100%; object-fit:cover; object-position:center top; min-height:640px;}
+  .about-text{
+    display:flex; flex-direction:column; justify-content:center;
+    padding:80px 64px;
+  }
+  .about-text h2{font-size:clamp(28px,3vw,40px); font-weight:700; text-transform:uppercase; letter-spacing:0.01em; margin-bottom:24px;}
+  .about-text p{color:var(--grey); margin-bottom:16px; font-size:15px;}
+  .about-text p:last-child{margin-bottom:0;}
+
+  /* Trayectoria / CV */
+  .cv-intro{max-width:820px; margin:0 auto 48px; text-align:center; color:var(--grey); font-size:15px; line-height:1.7;}
+  .cv-list{max-width:900px; margin:0 auto; border-top:1px solid var(--line);}
+  .cv-row{
+    display:flex; align-items:flex-start; gap:28px; padding:26px 0; border-bottom:1px solid var(--line);
+  }
+  .cv-year{width:64px; flex-shrink:0; font-size:14.5px; color:var(--grey); padding-top:2px;}
+  .cv-content{flex:1; min-width:0;}
+  .cv-content h3{font-size:17px; font-weight:700; text-transform:uppercase; letter-spacing:0.01em; line-height:1.3; margin-bottom:6px;}
+  .cv-content p{font-size:14px; color:var(--grey); line-height:1.6;}
+
+  /* Servicios */
+  .services .wrap{max-width:1200px;}
+  .service-grid{
+    display:grid; grid-template-columns:repeat(2,1fr); border-top:1px solid var(--line);
+  }
+  .service-card{
+    padding:48px 0; border-bottom:1px solid var(--line);
+  }
+  .service-card:first-child{border-right:1px solid var(--line); padding-right:48px;}
+  .service-card:last-child{padding-left:48px;}
+  .service-num{font-size:11px; color:var(--grey); letter-spacing:0.1em; margin-bottom:20px; display:block;}
+  .service-card h3{font-size:24px; font-weight:700; margin-bottom:14px; text-transform:uppercase; letter-spacing:0.03em;}
+  .service-card p{color:var(--grey); font-size:14.5px; margin-bottom:20px;}
+  .service-card ul{list-style:none; font-size:13.5px; color:var(--grey);}
+  .service-card li{padding:9px 0; border-top:1px solid var(--line);}
+  .service-card li:first-child{border-top:none;}
+
+  /* Dirección artística */
+  .dir-intro{max-width:820px; margin:0 auto 48px; text-align:center; color:var(--grey); font-size:15px; line-height:1.7;}
+  .dir-list{max-width:820px; margin:0 auto; border-top:1px solid var(--line);}
+  .dir-item{
+    display:flex; align-items:baseline; justify-content:space-between; gap:24px;
+    padding:26px 0; border-bottom:1px solid var(--line);
+  }
+  .dir-role{
+    font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--grey);
+    flex:0 0 200px;
+  }
+  .dir-title{font-size:16px; font-weight:300; flex:1;}
+  .dir-arrow{font-size:14px; opacity:0.4; transition:transform .2s, opacity .2s;}
+  .dir-item:hover .dir-arrow{opacity:1; transform:translateX(4px);}
+
+  /* Blog */
+  .blog-intro{max-width:820px; margin:0 auto 48px; text-align:center; color:var(--grey); font-size:15px; line-height:1.7;}
+  .blog-list{max-width:820px; margin:0 auto; border-top:1px solid var(--line);}
+  .blog-row{
+    display:flex; align-items:flex-start; gap:28px; padding:32px 0; border-bottom:1px solid var(--line);
+  }
+  .blog-date{width:100px; flex-shrink:0; font-size:12px; color:var(--grey); letter-spacing:0.08em; text-transform:uppercase; padding-top:3px;}
+  .blog-content{flex:1; min-width:0;}
+  .blog-content h3{font-size:20px; font-weight:700; text-transform:uppercase; letter-spacing:0.01em; line-height:1.3; margin-bottom:10px;}
+  .blog-content p{font-size:15px; color:var(--grey); line-height:1.7;}
+  .blog-empty{max-width:600px; margin:0 auto; text-align:center; color:var(--grey); font-size:14px; padding:40px 0; border-top:1px solid var(--line);}
+
+  /* Repertorio */
+  .rep-list{max-width:900px; margin:0 auto; border-top:1px solid var(--line);}
+  .rep-row{
+    display:flex; align-items:center; gap:28px;
+    padding:26px 0; border-bottom:1px solid var(--line);
+  }
+  .rep-work{flex:1; min-width:0;}
+  .rep-work h3{font-size:22px; font-weight:700; text-transform:uppercase; letter-spacing:0.01em; line-height:1.15;}
+  .rep-work span{font-size:12.5px; color:var(--grey);}
+  .rep-divider{width:1px; align-self:stretch; background:var(--line);}
+  .rep-role{flex:1; text-align:right; font-size:14.5px; color:var(--ink);}
+
+  /* Galeria — edge to edge, no gaps */
+  #galeria{padding-left:0; padding-right:0;}
+  #galeria .section-head{padding:0 40px;}
+  .gallery-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+    background:var(--line);
+  }
+  .gallery-item{aspect-ratio:3/4; overflow:hidden; background:var(--white);}
+  .gallery-item img{
+    width:100%; height:100%; object-fit:cover; object-position:center top;
+    transition:transform .5s ease;
+  }
+  .gallery-item:hover img{transform:scale(1.045);}
+
+  /* Prensa */
+  .press-list{max-width:820px; margin:0 auto; border-top:1px solid var(--line);}
+  .press-item{
+    display:flex; align-items:baseline; justify-content:space-between; gap:24px;
+    padding:26px 0; border-bottom:1px solid var(--line);
+  }
+  .press-source{
+    font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--grey);
+    flex:0 0 160px;
+  }
+  .press-title{font-size:16px; font-weight:300; flex:1;}
+  .press-arrow{font-size:14px; opacity:0.4; transition:transform .2s, opacity .2s;}
+  .press-item:hover .press-arrow{opacity:1; transform:translateX(4px);}
+
+  /* Testimonios */
+  .testimonials{border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .quote-grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:60px;
+    max-width:1000px; margin:0 auto;
+  }
+  .quote p{font-size:18px; font-weight:300; line-height:1.6; margin-bottom:18px;}
+  .quote span{font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--grey);}
+
+  /* Contacto */
+  .contact{text-align:center; max-width:600px; margin:0 auto;}
+  .contact h2{font-size:clamp(32px,5vw,52px); font-weight:700; text-transform:uppercase; letter-spacing:0.01em; margin-bottom:20px;}
+  .contact p{color:var(--grey); font-size:14px; margin-bottom:44px;}
+  .contact-email{
+    font-size:22px; font-weight:300; display:inline-block;
+    border-bottom:1px solid var(--ink); padding-bottom:6px; margin-bottom:48px;
+  }
+  .social-row{display:flex; gap:0; justify-content:center; font-size:11px; letter-spacing:0.14em; text-transform:uppercase;}
+  .social-row a{padding:0 18px; border-right:1px solid var(--line);}
+  .social-row a:last-child{border-right:none;}
+
+  footer{
+    padding:30px 40px; text-align:center; border-top:1px solid var(--line);
+    font-size:11px; color:var(--grey); letter-spacing:0.08em; text-transform:uppercase;
+  }
+
+  @media (max-width: 820px){
+    .navlinks{display:none;}
+    .about{grid-template-columns:1fr;}
+    .about-photo img{min-height:420px;}
+    .about-text{padding:56px 24px;}
+    .service-grid{grid-template-columns:1fr;}
+    .service-card:first-child{border-right:none; padding-right:0; border-bottom:1px solid var(--line);}
+    .service-card:last-child{padding-left:0;}
+    .rep-row{flex-direction:column; align-items:flex-start; gap:6px;}
+    .rep-divider{display:none;}
+    .rep-role{text-align:left;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .quote-grid{grid-template-columns:1fr; gap:36px;}
+    section{padding:72px 24px;}
+    .wrap{padding:0 24px;}
+    .nav{padding:18px 24px;}
+    #galeria .section-head{padding:0 24px;}
+    .press-item{flex-wrap:wrap;}
+    .press-source{flex:0 0 100%; margin-bottom:6px;}
+    .press-title{flex:1 1 100%;}
+    .dir-item{flex-wrap:wrap;}
+    .dir-role{flex:0 0 100%; margin-bottom:6px;}
+    .dir-title{flex:1 1 100%;}
+    .blog-row{flex-direction:column; align-items:flex-start; gap:6px;}
+    .blog-date{width:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="#inicio" class="logo">Eva Marco</a>
+    <nav class="navlinks">
+      <a href="#sobre-mi">About</a>
+      <a href="#servicios">Services</a>
+      <a href="#direccion-artistica">Artistic Direction</a>
+      <a href="#repertorio">Repertoire</a>
+      <a href="#galeria">Gallery</a>
+      <a href="https://www.youtube.com/@evamarco" target="_blank" rel="noopener">Videos</a>
+      <a href="#prensa">Press</a>
+      <a href="#criticas">Reviews</a>
+      <a href="#blog">Blog</a>
+      <a href="#contacto">Contact</a>
+    </nav>
+    <div class="lang-switch">
+      <a href="/">ES</a><span>·</span><a href="/en/" class="active">EN</a><span>·</span><a href="/it/">IT</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <img src="Eva-Marco-Retocadas/Eva-Marco-0646.jpg" alt="Eva Marco, soprano">
+  <div class="hero-copy">
+    <span class="eyebrow">Soprano</span>
+    <h1>Eva Marco</h1>
+    <p class="hero-tagline">Architect of musical experiences</p>
+    <p>Artistic excellence in service of every occasion. From intimate recitals to grand operatic productions and high-level corporate events, I create personalized musical experiences where every detail — repertoire selection, staging and performance — is conceived to move, inspire and leave a lasting impression.</p>
+    <div class="cta-row">
+      <a href="#contacto" class="btn btn-solid">Book / Inquire</a>
+      <a href="#servicios" class="btn">View services</a>
+    </div>
+  </div>
+</section>
+
+<section id="sobre-mi" style="padding:0;">
+  <div class="about">
+    <div class="about-photo"><img src="Eva-Marco-Retocadas/Eva-Marco-0338.jpg" alt="Eva Marco, portrait"></div>
+    <div class="about-text">
+      <span class="eyebrow">About me</span>
+      <h2>Opera and event planning, the same passion for detail</h2>
+      <p>I'm Eva Marco, an opera singer with a career devoted both to the stage and to creating live experiences. My vocal training and my work in lyric productions have given me a particular sensitivity to rhythm, staging and the emotion of the live moment.</p>
+      <p>Over the years, that same artistic rigor led me to event planning: private recitals, lyric soirées and luxury events where music takes center stage. I combine performance and production to offer personalized experiences, carefully crafted from start to finish.</p>
+    </div>
+  </div>
+
+  <div class="wrap" style="padding-top:0;">
+    <div class="section-head center">
+      <span class="eyebrow">Career</span>
+      <h2>Training and career</h2>
+    </div>
+    <p class="cv-intro">Born in 1985, she began her musical studies in Bottineau, North Dakota (USA) in 1998. She completed her training in Spain in choral direction, vocal style and vocal technique with Carlos Espinosa, Virginia Prieto and Josefina Arregui. She refined her technique in Milan alongside internationally renowned soprano Nino Machaidze (2018–2021) and concluded her studies with a Master's in Operatic Performance at the Bel Canto Academy, affiliated with the Trento Conservatory (Italy), in 2022, under the direction of Massimo Lambertini.</p>
+    <div class="cv-list">
+      <div class="cv-row">
+        <div class="cv-year">2020</div>
+        <div class="cv-content">
+          <h3>Idamante · Idomeneo (W.A. Mozart)</h3>
+          <p>International tour debut: Rhodes International Music Festival and Heraklion International Congress Center (Greece), with Teatro Grattacielo of New York, cond. Stefanos Koroneos and Myron Michailidis. Two symphonic concerts with the Greek National Opera Symphony Orchestra.</p>
+        </div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-year">2022</div>
+        <div class="cv-content">
+          <h3>Mimì · La Bohème (Puccini)</h3>
+          <p>Debut with the Las Palmas Philharmonic Orchestra, cond. Karen Mark Chichon. Symphonic tour "Puccini's Heroines" (Lazio, Rome, 2023).</p>
+        </div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-year">2024</div>
+        <div class="cv-content">
+          <h3>Desdemona · Otello (G. Verdi)</h3>
+          <p>Tour of Spanish opera houses: Teatro Isabel la Católica (Granada), Teatro Principal (Zamora) and Teatro Principal (Ourense), cond. José Escandell and Rodica Picirenau.</p>
+        </div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-year">2024</div>
+        <div class="cv-content">
+          <h3>Countess Almaviva · The Marriage of Figaro (W.A. Mozart)</h3>
+          <p>Romanian National Opera, Cluj-Napoca, cond. Mo. Crescenzi and Mihaela Sandu.</p>
+        </div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-year">2025</div>
+        <div class="cv-content">
+          <h3>St John Passion (J.S. Bach)</h3>
+          <p>Debut at the National Auditorium of Madrid, cond. Javier Corcuera. Regular performer at the Auditorium.</p>
+        </div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-year">2026</div>
+        <div class="cv-content">
+          <h3>Mass in C minor (W.A. Mozart)</h3>
+          <p>National Auditorium of Madrid.</p>
+        </div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-year">2026</div>
+        <div class="cv-content">
+          <h3>Symphonic concert alongside Plácido Domingo</h3>
+          <p>With Irina Lungu and Arturo Chacón, Palacio de Festivales de Santander, cond. Jordi Bernàcer.</p>
+        </div>
+      </div>
+      <div class="cv-row">
+        <div class="cv-year">2026</div>
+        <div class="cv-content">
+          <h3>Gala de clausura · Gurjaani International Arts Festival</h3>
+          <p>International special guest of the closing concert, alongside Mo. Nika Nikvashvili, a symphony orchestra and mixed choir, and Georgian artists Manana Todadze and Kote Kipiani. Gurjaani, Georgia, 21 June.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="servicios">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">Services</span>
+      <h2>Two disciplines, the same standard of excellence</h2>
+      <p>Live performances and full-scale production of events with a lyrical presence.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card">
+        <span class="service-num">01</span>
+        <h3>Lyric performances</h3>
+        <p>Opera recitals and classical repertoire for stages, private venues and luxury events.</p>
+        <ul>
+          <li>Solo or accompanied recitals</li>
+          <li>Personalized experiences</li>
+          <li>Private and corporate concerts</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <span class="service-num">02</span>
+        <h3>Event Planner</h3>
+        <p>Production of soirées and celebrations with live music at the center.</p>
+        <ul>
+          <li>Lyric soirées and galas</li>
+          <li>Artist and musical program coordination</li>
+          <li>Bespoke private events</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="direccion-artistica">
+  <div class="wrap" style="padding:0;">
+    <div class="section-head center">
+      <span class="eyebrow">Artistic Direction</span>
+      <h2>Production, negotiation and design of cultural projects</h2>
+    </div>
+    <p class="dir-intro">Beyond the stage, I also lead the creative and strategic side of musical projects: programming design, negotiation with institutions and artists, and end-to-end production of festivals and concert series.</p>
+    <div class="dir-list">
+      <a class="dir-item" href="https://www.entradas.com/artist/festival-de-musica-clasica-gran-castillo-de-pedraza/" target="_blank" rel="noopener">
+        <span class="dir-role">Castillo de Pedraza, Segovia</span>
+        <span class="dir-title">Noches Clásicas de Pedraza — artistic and musical direction, with the Sing Us orchestra. 2nd edition, eight concerts, summer 2026.</span>
+        <span class="dir-arrow">→</span>
+      </a>
+      <a class="dir-item" href="https://www.eldiariomontanes.es/culturas/dido-eneas-sufren-20220826204020-ntvo.html" target="_blank" rel="noopener">
+        <span class="dir-role">El Diario Montañés · 2022</span>
+        <span class="dir-title">Dido and Aeneas (H. Purcell) — artistic direction</span>
+        <span class="dir-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="repertorio">
+  <div class="wrap" style="padding:0;">
+    <div class="section-head center">
+      <span class="eyebrow">Repertoire</span>
+      <h2>Repertoire</h2>
+      <p>From grand opera repertoire to the most intimate song.</p>
+    </div>
+    <div class="rep-list">
+      <div class="rep-row">
+        <div class="rep-work"><h3>Norma</h3><span>Bellini</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Adalgisa, Norma</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Carmen</h3><span>Bizet</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Micaela</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Eugenio Oneguin</h3><span>Chaikovski</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Tatiana</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>La donna serpente</h3><span>Casella</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Miranda</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Anna Bolena</h3><span>Donizetti</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Anna Bolena, Giovanna Seymour</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Il castello di Kenilworth</h3><span>Donizetti</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Amelia</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Lucrezia Borgia</h3><span>Donizetti</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Lucrezia</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Maria Stuarda</h3><span>Donizetti</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Maria Stuarda, Elisabetta</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Roberto Devereux</h3><span>Donizetti</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Elisabetta I</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Belisario</h3><span>Donizetti</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Antonina</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Orfeo ed Euridice</h3><span>Gluck</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Euridice</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Alceste</h3><span>Gluck</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Alceste</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Fausto</h3><span>Gounod</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Marguerite</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Julio César en Egipto</h3><span>Händel</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Cleopatra</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Rinaldo</h3><span>Händel</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Armida</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Serse</h3><span>Händel</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Romilda</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>La viuda alegre</h3><span>Lehár</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Hanna Glawari</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Pagliacci</h3><span>Leoncavallo</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Nedda</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Ecuba</h3><span>Manfroce</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Ecuba</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Der Vampyr</h3><span>Marschner</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Malwina</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>L'amico Fritz</h3><span>Mascagni</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Suzel</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Chérubin</h3><span>Massenet</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Nina</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>La coronación de Popea</h3><span>Monteverdi</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Ottavia, Poppea</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Idomeneo</h3><span>Mozart</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Elettra, Ilia</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Las bodas de Fígaro</h3><span>Mozart</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Condesa de Almaviva, Susanna</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Don Giovanni</h3><span>Mozart</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Donna Anna, Donna Elvira</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Così fan tutte</h3><span>Mozart</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Fiordiligi</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>La flauta mágica</h3><span>Mozart</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Pamina</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>La clemenza di Tito</h3><span>Mozart</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Vitellia</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>La molinera</h3><span>Paisiello</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Eugenia</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>La Bohème</h3><span>Puccini</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Mimì</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Turandot</h3><span>Puccini</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Liù</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>L'inganno felice</h3><span>Rossini</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Isabella</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Maometto Secondo</h3><span>Rossini</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Anna Erisso</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Mosè in Egitto</h3><span>Rossini</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Elcìa</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>El viaje a Reims</h3><span>Rossini</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Madama Cortese, Corinna</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>The Rake's Progress</h3><span>Stravinski</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Anne Trulove</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>La Traviata</h3><span>Verdi</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Violetta Valéry</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Simon Boccanegra</h3><span>Verdi</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Amelia Grimaldi</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Otello</h3><span>Verdi</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Desdemona</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Falstaff</h3><span>Verdi</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Mrs. Alice Ford</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Griselda</h3><span>Scarlatti</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Griselda</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Medea in Corinto</h3><span>Mayr</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Medea</div>
+      </div>
+      <div class="rep-row">
+        <div class="rep-work"><h3>Los cuentos de Hoffmann</h3><span>Offenbach</span></div>
+        <div class="rep-divider"></div>
+        <div class="rep-role">Antonia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="galeria">
+  <div class="section-head center">
+    <span class="eyebrow">Gallery</span>
+    <h2>Moments on stage and at events</h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item"><img src="Eva-Marco-Retocadas/Eva-Marco-0046.jpg" alt="Eva Marco"></div>
+    <div class="gallery-item"><img src="Eva-Marco-Retocadas/Eva-Marco-0591.jpg" alt="Eva Marco on stage"></div>
+    <div class="gallery-item"><img src="Eva-Marco-Retocadas/Eva-Marco-0620.jpg" alt="Eva Marco"></div>
+    <div class="gallery-item"><img src="Eva-Marco-Retocadas/Eva-Marco-0163.jpg" alt="Eva Marco"></div>
+    <div class="gallery-item"><img src="Eva-Marco-Retocadas/Eva-Marco-0444.jpg" alt="Eva Marco"></div>
+    <div class="gallery-item"><img src="Eva-Marco-Retocadas/Eva-Marco-0661.jpg" alt="Eva Marco"></div>
+    <div class="gallery-item"><img src="Eva-Marco-Retocadas/Candlelight-Valencia.jpg" alt="Eva Marco singing at Candlelight Valencia"></div>
+    <div class="gallery-item"><img src="Eva-Marco-Retocadas/La-Boheme-105.jpg" alt="Eva Marco on stage, La Bohème"></div>
+    <div class="gallery-item"><img src="Eva-Marco-Retocadas/La-Boheme-140.jpg" alt="Eva Marco on stage, La Bohème"></div>
+    <div class="gallery-item"><img src="Eva-Marco-Retocadas/La-Boheme-292.jpg" alt="Eva Marco on stage, La Bohème"></div>
+    <div class="gallery-item"><img src="Eva-Marco-Retocadas/La-Boheme-78.jpg" alt="Eva Marco on stage, La Bohème"></div>
+    <div class="gallery-item"><img src="Eva-Marco-Retocadas/Sfogato-Callas-01.jpg" alt="Eva Marco on stage, Sfogato: Maria Callas"></div>
+    <div class="gallery-item"><img src="Eva-Marco-Retocadas/Sfogato-Callas-02.jpg" alt="Eva Marco on stage, Sfogato: Maria Callas"></div>
+  </div>
+</section>
+
+<section id="prensa">
+  <div class="section-head center">
+    <span class="eyebrow">Press</span>
+    <h2>Interviews and features</h2>
+  </div>
+  <div class="press-list">
+    <a class="press-item" href="https://www.carteleramusicales.es/perfil/eva-marco" target="_blank" rel="noopener">
+      <span class="press-source">Cartelera Musicales</span>
+      <span class="press-title">Perfil de Eva Marco</span>
+      <span class="press-arrow">→</span>
+    </a>
+    <a class="press-item" href="https://revistateatros.es/entrevista-a-eva-marco-por-maria-callas-sfogato_5617/" target="_blank" rel="noopener">
+      <span class="press-source">Revista Teatros</span>
+      <span class="press-title">Entrevista a Eva Marco por "María Callas: Sfogato"</span>
+      <span class="press-arrow">→</span>
+    </a>
+    <a class="press-item" href="https://www.culturamas.es/2025/09/14/sfogato-homenaje-a-maria-callas-con-mabel-del-pozo-y-eva-marco/" target="_blank" rel="noopener">
+      <span class="press-source">Culturamas</span>
+      <span class="press-title">"Sfogato", homenaje a María Callas con Mabel del Pozo y Eva Marco</span>
+      <span class="press-arrow">→</span>
+    </a>
+    <a class="press-item" href="https://www.rtve.es/play/audios/podria-ser-peor/entresijos-opera-eva-marco-soprano/16694328/" target="_blank" rel="noopener">
+      <span class="press-source">RTVE — Podría ser peor</span>
+      <span class="press-title">Los entresijos de la ópera, con Eva Marco (soprano)</span>
+      <span class="press-arrow">→</span>
+    </a>
+    <a class="press-item" href="https://www.eldiariomontanes.es/dmusica/honesto-espectador-expresivo-tecnicamente-correcto-20251212081621-nt.html" target="_blank" rel="noopener">
+      <span class="press-source">El Diario Montañés</span>
+      <span class="press-title">Honesto con el espectador, expresivo y técnicamente correcto</span>
+      <span class="press-arrow">→</span>
+    </a>
+    <a class="press-item" href="https://www.entradas.com/artist/eva-marco/" target="_blank" rel="noopener">
+      <span class="press-source">Entradas.com</span>
+      <span class="press-title">Próximas actuaciones y venta de entradas</span>
+      <span class="press-arrow">→</span>
+    </a>
+    <a class="press-item" href="https://www.rtve.es/play/audios/no-es-un-dia-cualquiera/eva-marco-cantante-opera-laura-pausini-maria-callas/6837250/" target="_blank" rel="noopener">
+      <span class="press-source">RTVE — No es un día cualquiera</span>
+      <span class="press-title">Eva Marco, cantante de ópera: de Laura Pausini a María Callas</span>
+      <span class="press-arrow">→</span>
+    </a>
+    <a class="press-item" href="https://www.ritmo.es/auditorio/critica-gala-lirica-de-placido-domingo-el-leon-y-el-tiempo-por-dario-fernandez-ruiz" target="_blank" rel="noopener">
+      <span class="press-source">Revista Ritmo</span>
+      <span class="press-title">Crítica: Gala lírica de Plácido Domingo — el león y el tiempo</span>
+      <span class="press-arrow">→</span>
+    </a>
+    <a class="press-item" href="https://dobleactc.wordpress.com/2025/09/25/critica-maria-callas-sfogato/" target="_blank" rel="noopener">
+      <span class="press-source">Doble A — cine, teatro y cultura</span>
+      <span class="press-title">Crítica: "María Callas, Sfogato" (4,5/5)</span>
+      <span class="press-arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<section class="testimonials" id="criticas">
+  <div class="section-head center">
+    <span class="eyebrow">Reviews</span>
+    <h2>What the critics say</h2>
+  </div>
+  <div class="quote-grid">
+    <div class="quote">
+      <p>"Honest with the audience, expressive and technically accurate."</p>
+      <span>— El Diario Montañés</span>
+    </div>
+    <div class="quote">
+      <p>"Sfogato": a tribute to Maria Callas with Mabel del Pozo and Eva Marco."</p>
+      <span>— Culturamas</span>
+    </div>
+    <div class="quote">
+      <p>"Eva Marco, a young and media-savvy artist, possesses that healthy hunger for the stage which is one of the indispensable conditions for any lasting career."</p>
+      <span>— Revista Ritmo</span>
+    </div>
+    <div class="quote">
+      <p>"Eva Marco embodies the artist who defies time, whose voice and presence fill the space, while at the same time reflecting the tension between the person and the myth."</p>
+      <span>— Doble A, cine, teatro y cultura</span>
+    </div>
+  </div>
+</section>
+
+<section id="blog">
+  <div class="wrap" style="padding:0;">
+    <div class="section-head center">
+      <span class="eyebrow">Blog</span>
+      <h2>Notes from the stage</h2>
+    </div>
+    <p class="blog-intro">Reflections on opera, the stage, event production, and everything that happens before the curtain rises.</p>
+    <div class="blog-list">
+      <div class="blog-row">
+        <div class="blog-date">Teatro Real</div>
+        <div class="blog-content">
+          <h3>Anna Netrebko at the Teatro Real</h3>
+          <p>The Teatro Real experienced one of those exceptional evenings that confirm why Anna Netrebko holds an undisputed place among the great divas of our time. The Russian soprano offered an ambitious, generous recital of extraordinary range, conceived not as a mere succession of pieces but as a journey through the different expressive territories that have defined her career.</p>
+          <p>Since her first appearance in Madrid with Prokofiev's Betrothal in a Monastery, Netrebko has been the protagonist of one of the most fascinating vocal evolutions of recent decades. Her instrument, always recognizable for the richness and sensuality of its timbre, has gained body, breadth and dramatic density without losing the ability to draw back the sound, shape half-voices and build phrases of an almost instrumental delicacy.</p>
+          <p>Far from seeming uneasy or in need of warming up, Netrebko took possession of the stage from the very first bars. Her voice appeared firm, ample and admirably projected, with that rare ability to fill the hall without ever resorting to stridency. The emission retained stability and evenness across registers, while the artist managed her instrument intelligently, without needless showmanship and always in service of the music.</p>
+          <p>One of the great moments of the night came with the final aria of Cilea's Adriana Lecouvreur. Netrebko offered an interpretation of enormous intensity, crowned by suspended, exquisitely beautiful spun tones. There was no mere virtuosity in them, but a true dramatic construction: the sound seemed to fade away at the same moment as the character. Equally admirable was Richard Strauss's Cäcilie, resolved in a single, expansive arc of phrase, sovereign breath control and a luminous exaltation, perfectly controlled.</p>
+          <p>The Russian block offered a glimpse into the singer's most intimate and personal territory. In Rachmaninoff's songs, Netrebko unfolded a phrasing full of nuance, expressive diction and an emotional depth that transcended the literal meaning of the words. Each song took on the character of a small dramatic scene. In the final scene of Rimsky-Korsakov's The Snow Maiden, she combined innocence, lyricism and building intensity to reach a conclusion of enormous evocative power.</p>
+          <p>She was also splendid in the aria from Charpentier's Louise. The sensuality of the French language found a privileged ally in her voice. Netrebko knew how to recreate the character's emotional awakening with a broad, flexible line full of intention, demonstrating that her artistic personality can assert itself across very different repertoires without blurring their respective styles.</p>
+          <p>The celebrated "Flower Duet" from Delibes's Lakmé, performed together with Elena Maximova, was one of the most delicate moments of the evening. Both artists achieved a warm, balanced blend based precisely on the contrast between their instruments: Netrebko's enveloping luminosity found a suggestive counterpoint in Maximova's darker color. The result exuded intimacy, elegance and a truly enchanting atmosphere.</p>
+          <p>In the second half, Tchaikovsky's pages confirmed Netrebko's extraordinary affinity with this repertoire. The romance The Sun Has Set reached an overwhelming depth. The soprano needed no grand gestures: the richness of her inflections, her mastery of color and a direct communication with the audience were enough to turn the piece into an emotional confession.</p>
+          <p>"Oh! quante volte" from Bellini's I Capuleti e i Montecchi was one of the most revealing challenges. The bareness of Bellini's writing demands a technique with nowhere to hide, and Netrebko faced it with courage and authority. The line was sustained with nobility, the dynamic swells were carefully drawn, and the legato revealed not only the experience of a great singer but also her willingness to keep exploring the limits of her instrument. It was a mature, vulnerable and deeply human Giulietta.</p>
+          <p>The Csárdás from Kálmán's The Gypsy Princess and Arditi's Il bacio provided the sparkle and effervescence needed to close the program. Netrebko was relaxed, charismatic and in complete command of the stage. Far from being minor pieces, these pages revealed another essential facet of her personality: the ability to enjoy herself, play with the audience and turn virtuosity into celebration.</p>
+          <p>The program was long, yes, but that generosity should be understood as a sign of respect for the audience. Its stylistic variety allowed one to take in the many dimensions of an artist who resists being confined to a single category. Song, opera, operetta and salon pieces coexisted in a recital conceived as a grand musical portrait.</p>
+          <p>Among the encores, "Aprite, presto, aprite" from Le nozze di Figaro showed a fun, theatrical and spontaneous Netrebko. Rather than trying to reproduce the lightness of a young Susanna, the soprano turned the fragment into a delightful scenic game, enthusiastically celebrated by the hall. The farewell with Non ti scordar di me, performed by all four artists, put an emotional and intimate seal on a night of true communion with the audience.</p>
+          <p>Elena Maximova was a solid and expressive collaborator, with a dark timbre that effectively complemented Netrebko's instrument. Violinist Kurt Mitterfellner stood out for the beauty of his sound, the lyricism of his bowing and the sensitivity displayed especially in Strauss's Morgen. Pavel Nevolsin, for his part, was much more than an accompanist: he built an attentive, flexible dialogue with each performer and also shone in his solo passages thanks to refined touch and an admirable sense of color.</p>
+          <p>Anna Netrebko did not simply offer a recital: she reaffirmed her status as a singular artist. Her voice retains richness, volume and an exceptional expressive palette, but it is her magnetism, her musical intelligence and her ability to turn every page into a theatrical experience that continue to place her above any purely technical consideration. The Teatro Real did not witness an uneven night, but rather the demonstration of a singer in full command of her artistic personality: free, generous, courageous and absolutely fascinating.</p>
+        </div>
+      </div>
+      <!-- Cuando tengas otra entrada nueva, añade aquí un bloque:
+      <div class="blog-row">
+        <div class="blog-date">Mes 2026</div>
+        <div class="blog-content">
+          <h3>Título de la entrada</h3>
+          <p>Texto de la entrada.</p>
+        </div>
+      </div>
+      -->
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <span class="eyebrow">Contact</span>
+  <h2>Let's talk about your next event</h2>
+  <p>Recitals, personalized experiences or the production of luxury events with live music. Write to me and let's design it together.</p>
+  <a class="contact-email" href="mailto:EVA@evamarco.com">EVA@evamarco.com</a>
+  <div class="social-row">
+    <a href="https://instagram.com/evamarco_operasinger" target="_blank" rel="noopener">Instagram</a>
+    <a href="#" target="_blank" rel="noopener">Facebook</a>
+    <a href="https://www.youtube.com/@evamarco" target="_blank" rel="noopener">YouTube</a>
+  </div>
+</section>
+
+<footer>
+  © 2026 Eva Marco. All rights reserved.
+</footer>
+
+</body>
+</html>
