@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Eva Marco | Soprano & Event Planner</title>
+<link rel="alternate" hreflang="es" href="https://evamarco.com/">
+<link rel="alternate" hreflang="en" href="https://evamarco.com/en/">
+<link rel="alternate" hreflang="it" href="https://evamarco.com/it/">
+<link rel="alternate" hreflang="x-default" href="https://evamarco.com/">
 <style>
   :root{
     --ink:#111111;
@@ -49,6 +53,12 @@
     transition:width .25s;
   }
   .navlinks a:hover::after{width:100%;}
+  .lang-switch{display:flex; gap:8px; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; margin-left:30px;}
+  .lang-switch a{opacity:0.45; transition:opacity .2s;}
+  .lang-switch a:hover{opacity:1;}
+  .lang-switch a.active{opacity:1; font-weight:700;}
+  .lang-switch span{opacity:0.3;}
+  @media (max-width: 820px){ .lang-switch{margin-left:0;} }
 
   /* Hero — full bleed */
   .hero{
@@ -289,6 +299,9 @@
       <a href="#blog">Blog</a>
       <a href="#contacto">Contacto</a>
     </nav>
+    <div class="lang-switch">
+      <a href="/" class="active">ES</a><span>·</span><a href="/en/">EN</a><span>·</span><a href="/it/">IT</a>
+    </div>
   </div>
 </header>
 
